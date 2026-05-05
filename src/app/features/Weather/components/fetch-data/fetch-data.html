@@ -1,0 +1,29 @@
+<section class="forecast-page">
+  <h1>Weather forecast</h1>
+  <p>This component demonstrates fetching data from the server.</p>
+
+  <ng-container *ngIf="forecasts$ | async as forecasts; else loading">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Temp. (C)</th>
+          <th>Temp. (F)</th>
+          <th>Summary</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let forecast of forecasts">
+          <td>{{ forecast.date }}</td>
+          <td>{{ forecast.temperatureC }}</td>
+          <td>{{ forecast.temperatureF }}</td>
+          <td>{{ forecast.summary }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <ng-template #loading>
+    <p>Loading weather forecast...</p>
+  </ng-template>
+</section>

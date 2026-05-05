@@ -1,0 +1,32 @@
+.forecast-page h1 {
+  margin: 0 0 8px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.forecast-page p {
+  margin: 0 0 20px;
+  color: #555;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+th,
+td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+}
+
+thead th {
+  background: #efefef;
+  font-weight: 700;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}

@@ -1,0 +1,11 @@
+<nav class="toolbar-nav">
+	<span class="brand">Player Demo</span>
+	<a
+		*ngFor="let route of routes"
+		[routerLink]="route.path"
+		routerLinkActive="active"
+		[routerLinkActiveOptions]="{ exact: route.path === 'fetch-data' }"
+	>
+		{{ route.title || route.path }}
+	</a>
+</nav>
