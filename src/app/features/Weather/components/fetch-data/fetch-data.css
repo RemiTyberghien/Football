@@ -1,12 +1,25 @@
+.forecast-page {
+  display: grid;
+  gap: 12px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #ffe900;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .forecast-page h1 {
-  margin: 0 0 8px;
-  font-size: 36px;
+  margin: 0;
+  font-size: 34px;
   font-weight: 600;
 }
 
 .forecast-page p {
-  margin: 0 0 20px;
-  color: #555;
+  margin: 0 0 8px;
+  color: #ddd;
 }
 
 table {
@@ -19,14 +32,15 @@ th,
 td {
   padding: 10px 12px;
   text-align: left;
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #333;
 }
 
 thead th {
-  background: #efefef;
+  background: #ffe900;
+  color: #111;
   font-weight: 700;
 }
 
 tbody tr:nth-child(even) {
-  background: #f7f7f7;
+  background: #161616;
 }

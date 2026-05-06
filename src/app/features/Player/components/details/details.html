@@ -1,1 +1,48 @@
-<p>details works!</p>
+<section class="page details-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Players</p>
+      <h1>Player details</h1>
+    </div>
+    <a routerLink="/players" class="button">Back to list</a>
+  </div>
+
+  @if (player$ | async; as player) {
+    <dl class="details-grid">
+      <div>
+        <dt>Shirt No</dt>
+        <dd>{{ player.shirtNo }}</dd>
+      </div>
+      <div>
+        <dt>Name</dt>
+        <dd>{{ player.name }}</dd>
+      </div>
+      <div>
+        <dt>Position</dt>
+        <dd>{{ player.position?.name || '-' }}</dd>
+      </div>
+      <div>
+        <dt>Appearances</dt>
+        <dd>{{ player.appearances ?? '-' }}</dd>
+      </div>
+      <div>
+        <dt>Goals</dt>
+        <dd>{{ player.goals ?? '-' }}</dd>
+      </div>
+      <div>
+        <dt>Goals per match</dt>
+        <dd>{{ player.goalsPerMatch ?? '-' }}</dd>
+      </div>
+    </dl>
+
+    <div class="pitch-boundary">
+      <div class="player-marker" [style.left.px]="player.positionX" [style.top.px]="player.positionY">
+        <img src="images/player.JPG" alt="Player" />
+      </div>
+    </div>
+
+    <a [routerLink]="['/players/edit', player.id]" class="button primary">Edit player</a>
+  } @else {
+    <p class="empty">Loading player...</p>
+  }
+</section>

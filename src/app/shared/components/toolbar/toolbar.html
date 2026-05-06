@@ -2,7 +2,7 @@
 	<span class="brand">Player Demo</span>
 	<a
 		*ngFor="let route of routes"
-		[routerLink]="route.path"
+		[routerLink]="['/', route.path]"
 		routerLinkActive="active"
 		[routerLinkActiveOptions]="{ exact: route.path === 'fetch-data' }"
 	>

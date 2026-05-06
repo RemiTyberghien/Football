@@ -1,1 +1,60 @@
-<p>list works!</p>
+<section class="page players-page">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">Squad</p>
+      <h1>Players</h1>
+    </div>
+    <a routerLink="/players/create" class="button primary">Create player</a>
+  </div>
+
+  @if (errorMessage) {
+    <p class="alert">{{ errorMessage }}</p>
+  }
+
+  @if (players$ | async; as players) {
+    @if (players.length > 0) {
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Shirt</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Appearances</th>
+              <th>Goals</th>
+              <th>Goals / match</th>
+              <th>Pitch X</th>
+              <th>Pitch Y</th>
+              <th class="actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (player of players; track player.id) {
+              <tr>
+                <td>{{ player.shirtNo }}</td>
+                <td>{{ player.name }}</td>
+                <td>{{ player.position?.name || '-' }}</td>
+                <td>{{ player.appearances ?? '-' }}</td>
+                <td>{{ player.goals ?? '-' }}</td>
+                <td>{{ player.goalsPerMatch ?? '-' }}</td>
+                <td>{{ player.positionX | number: '1.0-0' }}</td>
+                <td>{{ player.positionY | number: '1.0-0' }}</td>
+                <td class="actions">
+                  <a [routerLink]="['/players/details', player.id]" class="button small">Details</a>
+                  <a [routerLink]="['/players/edit', player.id]" class="button small">Edit</a>
+                  <button type="button" class="button small danger" (click)="deletePlayer(player)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    } @else {
+      <p class="empty">No players found.</p>
+    }
+  } @else {
+    <p class="empty">Loading players...</p>
+  }
+</section>

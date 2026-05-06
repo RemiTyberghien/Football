@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { FetchData } from './fetch-data';
+import { WeatherService } from '../../Services/weather-service';
 
 describe('FetchData', () => {
   let component: FetchData;
@@ -8,9 +10,16 @@ describe('FetchData', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FetchData]
-    })
-    .compileComponents();
+      imports: [FetchData],
+      providers: [
+        {
+          provide: WeatherService,
+          useValue: {
+            getWeather: () => of([]),
+          },
+        },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FetchData);
     component = fixture.componentInstance;

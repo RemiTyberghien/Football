@@ -1,7 +1,13 @@
-import { Position } from './positionmodel';
+import { Position } from './position.model';
 
 describe('Position', () => {
   it('should create an instance', () => {
-    expect(new Position()).toBeTruthy();
+    const position: Position = {
+      id: 1,
+      name: 'Forward',
+      displayOrder: 1,
+    };
+
+    expect(position).toBeTruthy();
   });
 });

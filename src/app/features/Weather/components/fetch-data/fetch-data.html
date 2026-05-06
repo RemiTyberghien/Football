@@ -1,6 +1,7 @@
 <section class="forecast-page">
+  <p class="eyebrow">Fetch Data</p>
   <h1>Weather forecast</h1>
-  <p>This component demonstrates fetching data from the server.</p>
+  <p>Forecast for the next five days.</p>
 
   <ng-container *ngIf="forecasts$ | async as forecasts; else loading">
     <table>

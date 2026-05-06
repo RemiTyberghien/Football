@@ -12,6 +12,7 @@ import { Toolbar } from './shared/components/toolbar/toolbar';
 export class App {
   protected readonly title = signal('Football');
   protected readonly routes = routes
-    .filter(r => typeof r.path === 'string' && !!r.path)
+    .filter(r => typeof r.path === 'string' && !!r.path && !(r as any).data?.hideInNav)
+    .filter(r => !(r as any).redirectTo)
     .map(r => ({ path: r.path as string, title: (r as any).title }));
 }

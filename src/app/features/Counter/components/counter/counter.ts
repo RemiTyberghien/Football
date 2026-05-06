@@ -7,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrl: './counter.css',
 })
 export class Counter {
+  currentCount = 0;
 
+  increment(): void {
+    this.currentCount++;
+  }
+
+  decrement(): void {
+    this.currentCount--;
+  }
+
+  reset(): void {
+    this.currentCount = 0;
+  }
 }

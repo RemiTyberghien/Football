@@ -1,1 +1,60 @@
-<p>create works!</p>
+<section class="page player-form-page">
+  <div class="page-header">
+    <h1>Create Player</h1>
+    <a routerLink="/players" class="button secondary">Back To Players List</a>
+  </div>
+
+  @if (errorMessage) {
+    <p class="alert">{{ errorMessage }}</p>
+  }
+
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-grid">
+      <label>
+        Shirt No:
+        <input formControlName="shirtNo" id="shirtNo" type="number" />
+      </label>
+
+      <label>
+        Name:
+        <input formControlName="name" id="name" type="text" />
+      </label>
+
+      <div class="pitch-boundary">
+        <div
+          class="player"
+          cdkDrag
+          cdkDragBoundary=".pitch-boundary"
+          [cdkDragFreeDragPosition]="dragPosition"
+          (cdkDragEnded)="onDragEnded($event)"
+        >
+          <img src="images/player.JPG" alt="Player" />
+        </div>
+      </div>
+
+      <label>
+        Position:
+        <select formControlName="positionId" id="positionId">
+          <option [ngValue]="null">- Select -</option>
+          @if (positions$ | async; as positions) {
+            @for (position of positions; track position.id) {
+              <option [ngValue]="position.id">{{ position.name }}</option>
+            }
+          }
+        </select>
+      </label>
+
+      <label>
+        Appearances:
+        <input formControlName="appearances" id="appearances" type="number" />
+      </label>
+
+      <label>
+        Goals:
+        <input formControlName="goals" id="goals" type="number" />
+      </label>
+    </div>
+
+    <button class="button primary" type="submit" [disabled]="createForm.invalid">Create</button>
+  </form>
+</section>
