@@ -1,47 +1,26 @@
 <section class="page details-page">
-  <div class="page-header">
-    <div>
-      <p class="eyebrow">Players</p>
-      <h1>Player details</h1>
-    </div>
-    <a routerLink="/players" class="button">Back to list</a>
-  </div>
+  <h1>Player Details</h1>
 
   @if (player$ | async; as player) {
-    <dl class="details-grid">
-      <div>
-        <dt>Shirt No</dt>
-        <dd>{{ player.shirtNo }}</dd>
-      </div>
-      <div>
-        <dt>Name</dt>
-        <dd>{{ player.name }}</dd>
-      </div>
-      <div>
-        <dt>Position</dt>
-        <dd>{{ player.position?.name || '-' }}</dd>
-      </div>
-      <div>
-        <dt>Appearances</dt>
-        <dd>{{ player.appearances ?? '-' }}</dd>
-      </div>
-      <div>
-        <dt>Goals</dt>
-        <dd>{{ player.goals ?? '-' }}</dd>
-      </div>
-      <div>
-        <dt>Goals per match</dt>
-        <dd>{{ player.goalsPerMatch ?? '-' }}</dd>
-      </div>
-    </dl>
+    <article class="details-panel">
+      <header class="details-header">
+        <h2>{{ player.name }}</h2>
+        <a routerLink="/players" class="button">Back To Players List</a>
+      </header>
 
-    <div class="pitch-boundary">
-      <div class="player-marker" [style.left.px]="player.positionX" [style.top.px]="player.positionY">
-        <img src="images/player.JPG" alt="Player" />
-      </div>
-    </div>
+      <div class="details-row"><strong>Id:</strong> {{ player.id }}</div>
+      <div class="details-row"><strong>Shirt No:</strong> {{ player.shirtNo }}</div>
+      <div class="details-row"><strong>Position:</strong> {{ player.position?.name || '-' }}</div>
+      <div class="details-row"><strong>Appearances:</strong> {{ player.appearances ?? '-' }}</div>
+      <div class="details-row"><strong>Goals:</strong> {{ player.goals ?? '-' }}</div>
+      <div class="details-row"><strong>Goals per match:</strong> {{ player.goalsPerMatch ?? '-' }}</div>
 
-    <a [routerLink]="['/players/edit', player.id]" class="button primary">Edit player</a>
+      <div class="pitch-boundary">
+        <div class="player-marker" [style.left.px]="player.positionX" [style.top.px]="player.positionY">
+          <img src="images/player.JPG" alt="Player" />
+        </div>
+      </div>
+    </article>
   } @else {
     <p class="empty">Loading player...</p>
   }
